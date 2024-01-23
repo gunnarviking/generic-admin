@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14.1
+    ports:
+      - '8092:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: generic_admin
+      POSTGRES_PASSWORD: "kaFR?n<-fXsJeE]U:4,7SG"
+    volumes:
+      - generic_admin_data:/var/lib/postgresql/data
+volumes:
+  generic_admin_data:
