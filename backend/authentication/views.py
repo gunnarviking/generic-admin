@@ -11,9 +11,7 @@ def login_post(request):
         data = loads(request.body.decode("utf-8"))
         username = data.get("username")
         password = data.get("password")
-        print("pre auth")
         user = authenticate(username=username, password=password)
-        print(user)
         if user is not None:
             return HttpResponse(status=204)
         else:
