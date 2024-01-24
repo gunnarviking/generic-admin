@@ -1,14 +1,20 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from json import loads
-from django.http import JsonResponse
+from django.http import HttpResponse
+from django.contrib.auth import authenticate
 
 
 @csrf_exempt
 def login_post(request):
     if request.method == "POST":
-        print("hello")
         data = loads(request.body.decode("utf-8"))
-        email = data.get("email")
+        username = data.get("username")
         password = data.get("password")
-        return JsonResponse({"status": "success", "message": "Login successful"})
+        print("pre auth")
+        user = authenticate(username=username, password=password)
+        print(user)
+        if user is not None:
+            return HttpResponse(status=204)
+        else:
+            return HttpResponse(status=403)

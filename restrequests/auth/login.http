@@ -1,6 +1,6 @@
 POST http://127.0.0.1:8000/auth/login/
 
 {
-    "email": "test",
-    "password": "1234"
+    "username": "admin",
+    "password": "1234pass"
 }
